@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      env:
+        type: string
+        required: true
+        description: environment to deploy
+      artifact-name:
+        type: string
+        required: true
+        description: Name of the artifact to download
+
+jobs:
+  deploy:
+    environment: ${{ inputs.env }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: .
+
+      - name: Deploy
+        run: echo 'Deploying'

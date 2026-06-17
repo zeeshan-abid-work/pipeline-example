@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      artifact-name:
+        type: string
+        required: true
+        description: Name of the artifact to save
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Lint"
+        run: echo 'Linting'
+
+      - name: Test
+        run: echo 'Testing'
+
+      - name: Build
+        run: echo 'building' > build.log
+
+      - name: Save Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ inputs.artifact-name }}
+          path: .
