@@ -2,6 +2,8 @@ name: Pipeline
 
 on:
   push:
+    tags:
+      - v*
     branches: ["main"]
   pull_request:
     branches: ["main"]
@@ -15,6 +17,7 @@ jobs:
   dev:
     needs: build
     uses: ./.github/workflows/deploy.yml
+    if: github.ref == 'refs/heads/main'
     with:
       env: dev
       artifact-name: build
@@ -22,6 +25,7 @@ jobs:
   stage:
     needs: dev
     uses: ./.github/workflows/deploy.yml
+    if: github.ref == 'refs/heads/main'
     with:
       env: stage
       artifact-name: build
@@ -29,6 +33,7 @@ jobs:
   prod:
     needs: stage
     uses: ./.github/workflows/deploy.yml
+    if: startsWith(github.ref, 'refs/tags/v')
     with:
       env: prod
       artifact-name: build
