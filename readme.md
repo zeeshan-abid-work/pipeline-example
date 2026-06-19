@@ -28,7 +28,7 @@ With environment protection rules we can force a review before deploying to a sp
 
 ![Approved](images/deployment-approved.png)
 
-Once the review is approved the deployment will proceed automatically.
+Once the review is <b>approved</b> the deployment will proceed automatically.
 
 We will also restrict deployment by checking the branch name.
 
