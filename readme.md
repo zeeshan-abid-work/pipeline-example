@@ -4,7 +4,7 @@ This is an example of a Github Actions Multi-Staged pipeline.
 This document describes the pipeline and how it works.
 
 ## Running the pipeline
-
+ 
 The pipeline automatically triggers and does not need to be manually triggered.
 If you wish to deploy a previous version, you can manually re-run the already completed pipeline.
 
